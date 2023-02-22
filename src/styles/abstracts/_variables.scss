@@ -1,0 +1,18 @@
+/***********/
+/* COLORS */
+/**********/
+
+$primary-color: #93AD18;
+$white: #ffffff;
+$black: #000000;
+
+
+/***************/
+/* RESPONSIVE */
+/**************/
+
+// 1.Breakpoints map for responsive
+$breakpoints: (
+    medium: 1024px,
+    small: 768px
+);

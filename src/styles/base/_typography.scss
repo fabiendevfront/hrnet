@@ -1,0 +1,11 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+/********************/
+/* TYPOGRAPHY STYLE */
+/********************/
+
+a {
+    color: variables.$black;
+    text-decoration: none;
+}
