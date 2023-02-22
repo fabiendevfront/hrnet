@@ -1,24 +1,19 @@
-import logo from "./assets/logo.svg";
+import Layout from "./layout/Layout";
+import AppRouter from "./router/AppRouter.jsx";
 
-function App() {
+/**
+ * The App component returns JSX element that renders Layout component which contains an AppRouter component.
+ * @component
+ * @returns {JSX.Element}
+ */
+const App = () => {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-          Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-          Learn React
-                </a>
-            </header>
+        <div className="app">
+            <Layout>
+                <AppRouter />
+            </Layout>
         </div>
     );
-}
+};
 
 export default App;
