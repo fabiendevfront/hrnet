@@ -4,3 +4,72 @@
 /*****************/
 /* HEADER LAYOUT */
 /*****************/
+
+.header {
+    width: 100%;
+    padding: 30px 5% 30px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px inset;
+
+    @include mixins.medium-break {
+        flex-direction: column;
+    }
+    @include mixins.small-break {
+        padding: 20px 20px 18px 20px;
+    }
+
+    h1 {
+        line-height: 0;
+        margin: 0;
+    }
+
+    &__logo {
+        height: 80px;
+
+        @include mixins.medium-break {
+            margin-bottom: 30px;
+        }
+
+        @include mixins.small-break {
+            height: 60px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+    }
+
+    &__nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include mixins.font-size(24px);
+        font-weight: 400;
+        margin-right: 47px;
+
+        @include mixins.small-break {
+            @include mixins.font-size(16px);
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            color: variables.$primary-color;
+        }
+
+        &.active {
+            color: variables.$secondary-color;
+        }
+    }
+
+    &__icon {
+        margin-right: 6px;
+    }
+}
