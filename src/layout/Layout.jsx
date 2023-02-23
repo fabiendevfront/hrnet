@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 /**
@@ -10,10 +11,11 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element}
  */
 const Layout = ({ children }) => {
+    const location = useLocation();
     return (
         <>
             <Header />
-            <main className="main">{children}</main>
+            <main className={location.pathname === "/" ? "main main--home" : "main"}>{children}</main>
             <Footer />
         </>
     );

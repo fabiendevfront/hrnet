@@ -24,9 +24,14 @@ body {
     min-height: 100vh;
 }
 
-main {
-    background-color: variables.$bg-grey;
+.main {
     flex: 1;
+    padding: variables.$wrapper-xl;
+    background: variables.$bg-grey;
+
+    &--home {
+        background: variables.$secondary-color;
+    }
 }
 
 html {

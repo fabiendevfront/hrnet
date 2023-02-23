@@ -7,7 +7,7 @@
 
 .header {
     width: 100%;
-    padding: 30px 5% 30px 5%;
+    padding: variables.$wrapper-layout;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
