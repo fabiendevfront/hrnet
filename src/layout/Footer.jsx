@@ -1,7 +1,12 @@
+import logo from "../assets/logo.png";
+
 const Footer = () => {
     return (
         <footer className="footer">
-            <h2>Footer</h2>
+            <img src={logo} className="footer__logo" alt="Logo du site Hrnet" />
+            <p className="footer__copyright">
+                Copyright, Wealth Health {new Date().getFullYear()}
+            </p>
         </footer>
     );
 };
