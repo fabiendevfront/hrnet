@@ -1,3 +1,6 @@
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const EmployeeForm = () => {
     return (
         <div className="employee-form">
@@ -14,7 +17,10 @@ const EmployeeForm = () => {
                     </div>
                     <div className="employee-form__group">
                         <label htmlFor="birth" className="employee-form__label">Date of birth</label>
-                        <input type="text" id="birth" className="employee-form__input" />
+                        <DatePicker
+                            id="birthdate"
+                            className="employee-form__input"
+                        />
                     </div>
                 </div>
                 <div className="employee-form__container">
@@ -40,7 +46,10 @@ const EmployeeForm = () => {
                     <h3 className="employee-form__title">Work status</h3>
                     <div className="employee-form__group">
                         <label htmlFor="start" className="employee-form__label">Start Date</label>
-                        <input type="text" id="start" className="employee-form__input" />
+                        <DatePicker
+                            id="start"
+                            className="employee-form__input"
+                        />
                     </div>
                     <div className="employee-form__group">
                         <label htmlFor="department" className="employee-form__label">Department</label>
