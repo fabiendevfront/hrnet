@@ -4,3 +4,27 @@
 /*****************************/
 /* EMPLOYEE LIST PAGE STYLE */
 /****************************/
+
+.employee-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    &__title {
+        @include mixins.font-size(42px);
+        color: variables.$secondary-color;
+        margin: 15px 0 0 0;
+    }
+
+    &__content {
+        width: 90%;
+        max-width: 1300px;
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$white;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgb(149 157 165/20%);
+    }
+}
