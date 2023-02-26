@@ -21,14 +21,15 @@ const EmployeeForm = () => {
                         <input
                             type="text"
                             id="firstname"
-                            className="employee-form__input"
+                            className={errors.firstname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "firstname",
-                                { required: true }
+                                { required: true },
+                                { pattern: /^[\p{L}]{2,25}$/ui }
                             )}
                         />
                         {errors.firstname && (
-                            <p className="employee-form__error">The firstname entered is incorrect</p>
+                            <p className="employee-form__error">Firstname entered is incorrect</p>
                         )}
                     </div>
                     <div className="employee-form__group">
@@ -36,14 +37,15 @@ const EmployeeForm = () => {
                         <input
                             type="text"
                             id="lastname"
-                            className="employee-form__input"
+                            className={errors.lastname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "lastname",
-                                { required: true }
+                                { required: true },
+                                { pattern: /^[\p{L}]{2,25}$/ui }
                             )}
                         />
                         {errors.lastname && (
-                            <p className="employee-form__error">The lastname entered is incorrect</p>
+                            <p className="employee-form__error">Lastname entered is incorrect</p>
                         )}
                     </div>
                     <div className="employee-form__group">
@@ -54,7 +56,7 @@ const EmployeeForm = () => {
                             render={({ field: { onChange, value } }) => (
                                 <DatePicker
                                     id="birthdate"
-                                    className="employee-form__input"
+                                    className={errors.birthdate ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                                     selected={value}
                                     onChange={onChange}
                                 />
@@ -73,14 +75,15 @@ const EmployeeForm = () => {
                         <input
                             type="text"
                             id="street"
-                            className="employee-form__input"
+                            className={errors.street ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "street",
-                                { required: true }
+                                { required: true },
+                                { pattern: /^[\p{L}\s\d]{2,25}$/ui }
                             )}
                         />
                         {errors.street && (
-                            <p className="employee-form__error">The street entered is incorrect</p>
+                            <p className="employee-form__error">Street entered is incorrect</p>
                         )}
                     </div>
                     <div className="employee-form__group">
@@ -88,14 +91,15 @@ const EmployeeForm = () => {
                         <input
                             type="text"
                             id="city"
-                            className="employee-form__input"
+                            className={errors.city ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "city",
-                                { required: true }
+                                { required: true },
+                                { pattern: /^[\p{L}]{2,25}$/ui }
                             )}
                         />
                         {errors.city && (
-                            <p className="employee-form__error">The city entered is incorrect</p>
+                            <p className="employee-form__error">City entered is incorrect</p>
                         )}
                     </div>
                     <div className="employee-form__group">
@@ -107,13 +111,15 @@ const EmployeeForm = () => {
                         <input
                             type="number"
                             id="zip"
-                            className="employee-form__input"
+                            className={errors.zip ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "zip",
                                 { required: true }
                             )}
                         />
-
+                        {errors.zip && (
+                            <p className="employee-form__error">ZIP code is required</p>
+                        )}
                     </div>
                 </div>
                 <div className="employee-form__container">
@@ -126,7 +132,7 @@ const EmployeeForm = () => {
                             render={({ field: { onChange, value } }) => (
                                 <DatePicker
                                     id="start"
-                                    className="employee-form__input"
+                                    className={errors.start ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                                     selected={value}
                                     onChange={onChange}
                                 />

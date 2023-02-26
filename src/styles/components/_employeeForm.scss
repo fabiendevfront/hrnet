@@ -53,6 +53,10 @@
         padding: 10px;
         border-radius: 8px;
         border: 1px solid #a7a7a7;
+
+        &--error {
+            border: 3px solid red;
+        }
     }
 
     &__error {
