@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
@@ -6,20 +5,22 @@ import { useForm, Controller } from "react-hook-form";
 import { formatSubmitData } from "../business/tools";
 import { states } from "../data/states";
 import { departments } from "../data/departments";
+import { useEmployee } from "../hook/useEmployee";
 
 const EmployeeForm = () => {
-    const [newEmployee, setNewEmployee] = useState("");
     const { handleSubmit, register, control, formState: { errors } } = useForm();
+    const { employees, addEmployee } = useEmployee();
 
-    const addEmployee = (data) => {
+    const addNewEmployee = (data) => {
         const newEmployee = formatSubmitData(data);
-        setNewEmployee(newEmployee);
+        addEmployee(newEmployee);
     };
 
-    console.log(newEmployee);
+    console.log(employees);
+
     return (
         <div className="employee-form">
-            <form className="employee-form__form" onSubmit={handleSubmit(addEmployee)}>
+            <form className="employee-form__form" onSubmit={handleSubmit(addNewEmployee)}>
                 <div className="employee-form__container">
                     <h3 className="employee-form__title">Informations</h3>
                     <div className="employee-form__group">
