@@ -1,0 +1,61 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+/********************************/
+/* REACT-SELECT COMPONENT STYLE */
+/*******************************/
+
+.react-select {
+    width: 100%;
+
+    &--error {
+        .react-select__control {
+            border: 3px solid variables.$error !important;
+            border-radius: 8px !important;
+        }
+    }
+
+    &__control {
+        height: 45px;
+        border-radius: 8px !important;
+        border: 1px solid #a7a7a7 !important;
+
+        &:focus,
+        &:focus-within,
+        &:focus-visible {
+            box-shadow: 0 0 0 3px variables.$primary-color !important;
+
+            .react-select__placeholder {
+                color: transparent !important;
+            }
+        }
+    }
+
+    &__value-container {
+        height: 100%;
+    }
+
+    &__placeholder {
+
+        &:focus,
+        &:focus-within,
+        &:focus-visible {
+            color: transparent;
+        }
+    }
+
+    &__input-container {
+        height: 100%;
+    }
+
+    &__input {
+
+        &:focus,
+        &:focus-within,
+        &:focus-visible {
+            box-shadow: none;
+            outline: auto;
+        }
+    }
+
+}

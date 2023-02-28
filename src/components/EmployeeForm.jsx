@@ -1,16 +1,22 @@
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
-import { formatDate } from "../business/tools";
+import { formatSubmitData } from "../business/tools";
+import { states } from "../data/states";
+import { departments } from "../data/departments";
 
 const EmployeeForm = () => {
+    const [newEmployee, setNewEmployee] = useState("");
     const { handleSubmit, register, control, formState: { errors } } = useForm();
 
     const addEmployee = (data) => {
-        console.log(formatDate(data.birthdate));
-        console.log(formatDate(data.start));
+        const newEmployee = formatSubmitData(data);
+        setNewEmployee(newEmployee);
     };
 
+    console.log(newEmployee);
     return (
         <div className="employee-form">
             <form className="employee-form__form" onSubmit={handleSubmit(addEmployee)}>
@@ -24,8 +30,10 @@ const EmployeeForm = () => {
                             className={errors.firstname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "firstname",
-                                { required: true },
-                                { pattern: /^[\p{L}]{2,25}$/ui }
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
                             )}
                         />
                         {errors.firstname && (
@@ -40,8 +48,10 @@ const EmployeeForm = () => {
                             className={errors.lastname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "lastname",
-                                { required: true },
-                                { pattern: /^[\p{L}]{2,25}$/ui }
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
                             )}
                         />
                         {errors.lastname && (
@@ -78,8 +88,10 @@ const EmployeeForm = () => {
                             className={errors.street ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "street",
-                                { required: true },
-                                { pattern: /^[\p{L}\s\d]{2,25}$/ui }
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}\s\d]{2,25}$/ui
+                                }
                             )}
                         />
                         {errors.street && (
@@ -94,8 +106,10 @@ const EmployeeForm = () => {
                             className={errors.city ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                             {...register(
                                 "city",
-                                { required: true },
-                                { pattern: /^[\p{L}]{2,25}$/ui }
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
                             )}
                         />
                         {errors.city && (
@@ -104,7 +118,24 @@ const EmployeeForm = () => {
                     </div>
                     <div className="employee-form__group">
                         <label htmlFor="state" className="employee-form__label">State</label>
-                        <input type="text" id="state" className="employee-form__input" />
+                        <Controller
+                            name="state"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <Select
+                                    options={states}
+                                    onChange={onChange}
+                                    value={value}
+                                    placeholder="Select a state..."
+                                    className={errors.state ? "react-select react-select--error" : "react-select"}
+                                    classNamePrefix="react-select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.state && (
+                            <p className="employee-form__error">State is required</p>
+                        )}
                     </div>
                     <div className="employee-form__group">
                         <label htmlFor="zip" className="employee-form__label">Zip Code</label>
@@ -145,7 +176,24 @@ const EmployeeForm = () => {
                     </div>
                     <div className="employee-form__group">
                         <label htmlFor="department" className="employee-form__label">Department</label>
-                        <input type="text" id="department" className="employee-form__input" />
+                        <Controller
+                            name="department"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <Select
+                                    options={departments}
+                                    onChange={onChange}
+                                    value={value}
+                                    placeholder="Select a department..."
+                                    className={errors.state ? "react-select react-select--error" : "react-select"}
+                                    classNamePrefix="react-select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.department && (
+                            <p className="employee-form__error">Department is required</p>
+                        )}
                     </div>
                 </div>
                 <button className="btn">Save</button>

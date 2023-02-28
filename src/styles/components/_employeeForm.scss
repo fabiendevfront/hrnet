@@ -55,13 +55,13 @@
         border: 1px solid #a7a7a7;
 
         &--error {
-            border: 3px solid red;
+            border: 3px solid variables.$error;
         }
     }
 
     &__error {
         font-weight: 700;
-        color: red;
+        color: variables.$error;
         margin: 0;
     }
 
