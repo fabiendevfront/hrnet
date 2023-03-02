@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useEmployee } from "../hook/useEmployee";
 import DataTable from "react-data-table-component";
 import { tableColumns, searchEmployees } from "../business/tools";
@@ -7,8 +7,13 @@ import Search from "./Search";
 const EmployeeTable = () => {
     const [search, setSearch] = useState("");
     const { employees } = useEmployee();
+    const [displayedEmployees, setDisplayedEmployees] = useState(employees);
 
-    const filteredEployees = searchEmployees(employees, search);
+    useEffect(() => {
+        setDisplayedEmployees(employees);
+    }, [employees]);
+
+    const filteredEployees = searchEmployees(displayedEmployees, search);
 
     const newSearch = (e) => {
         setSearch(e.target.value);
