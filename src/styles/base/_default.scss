@@ -32,6 +32,13 @@ body {
     &--home {
         background: variables.$secondary-color;
     }
+
+    &--employee {
+
+        @include mixins.large-break {
+            padding: variables.$wrapper-l;
+        }
+    }
 }
 
 html {

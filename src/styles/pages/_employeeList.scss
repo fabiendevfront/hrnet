@@ -18,13 +18,17 @@
     }
 
     &__content {
-        width: 90%;
-        max-width: 1300px;
+        width: 100%;
+        max-width: 1800px;
         padding: 40px 50px;
         display: flex;
         flex-direction: column;
         background-color: variables.$white;
         border-radius: 8px;
         box-shadow: 0 8px 24px rgb(149 157 165/20%);
+
+        @include mixins.large-break {
+            padding: 40px 15px;
+        }
     }
 }

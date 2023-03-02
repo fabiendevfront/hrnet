@@ -20,14 +20,21 @@
 /* RESPONSIVE */
 /**************/
 
-// 1. Contain media queries for medium screen
+// 1. Contain media queries for large screen
+@mixin large-break {
+    @media screen and (max-width: map-get(variables.$breakpoints, large)) {
+        @content;
+    }
+}
+
+// 2. Contain media queries for medium screen
 @mixin medium-break {
     @media screen and (max-width: map-get(variables.$breakpoints, medium)) {
         @content;
     }
 }
 
-// 2. Contain media queries for small screen
+// 3. Contain media queries for small screen
 @mixin small-break {
     @media screen and (max-width: map-get(variables.$breakpoints, small)) {
         @content;

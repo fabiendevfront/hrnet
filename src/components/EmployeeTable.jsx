@@ -1,12 +1,21 @@
 import { useEmployee } from "../hook/useEmployee";
+import DataTable from "react-data-table-component";
+import { tableColumns } from "../business/tools";
 
 const EmployeeTable = () => {
     const { employees } = useEmployee();
 
     return (
         <div className="employee-table">
-            {console.log(employees)}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam facilis a aperiam, saepe pariatur perspiciatis consequatur recusandae tenetur reiciendis id dolorem ipsa dignissimos qui earum. Sunt voluptas repudiandae, maxime pariatur inventore praesentium quia eveniet cumque, corporis autem et nostrum expedita illum beatae! Dignissimos ipsa eligendi id esse distinctio error tenetur.
+            <DataTable
+                columns={tableColumns}
+                data={employees}
+                responsive
+                striped
+                highlightOnHover
+                pagination
+                theme="solarized"
+            />
         </div>
     );
 };

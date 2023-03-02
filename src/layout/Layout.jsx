@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Header />
-            <main className={location.pathname === "/" ? "main main--home" : "main"}>{children}</main>
+            <main className={location.pathname === "/" ? "main main--home" : location.pathname === "/employee-list" ? "main main--employee" : "main"}>{children}</main>
             <Footer />
         </>
     );
