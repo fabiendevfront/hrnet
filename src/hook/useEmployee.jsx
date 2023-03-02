@@ -9,7 +9,6 @@ export const useEmployee = () => {
     }, []);
 
     const addEmployee = (employee) => {
-        console.log(employee);
         const newListEmployees = [...employees];
         newListEmployees.push(employee);
         setEmployee(newListEmployees);

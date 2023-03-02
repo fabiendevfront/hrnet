@@ -1,22 +1,22 @@
+import { useContext } from "react";
+import { EmployeeContext } from "../context/EmployeeContext";
+import { useForm, Controller } from "react-hook-form";
+import { formatSubmitData } from "../business/tools";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
-import { useForm, Controller } from "react-hook-form";
-import { formatSubmitData } from "../business/tools";
 import { states } from "../data/states";
 import { departments } from "../data/departments";
-import { useEmployee } from "../hook/useEmployee";
+
 
 const EmployeeForm = () => {
     const { handleSubmit, register, control, formState: { errors } } = useForm();
-    const { employees, addEmployee } = useEmployee();
+    const { addEmployee } = useContext(EmployeeContext);
 
     const addNewEmployee = (data) => {
         const newEmployee = formatSubmitData(data);
         addEmployee(newEmployee);
     };
-
-    console.log(employees);
 
     return (
         <div className="employee-form">
