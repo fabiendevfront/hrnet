@@ -70,6 +70,10 @@ const EmployeeForm = () => {
                                     className={errors.birthdate ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                                     selected={value}
                                     onChange={onChange}
+                                    placeholderText="Choose a date..."
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    dropdownMode="select"
                                 />
                             )}
                             rules={{ required: true }}
@@ -167,6 +171,10 @@ const EmployeeForm = () => {
                                     className={errors.start ? "employee-form__input employee-form__input--error" : "employee-form__input"}
                                     selected={value}
                                     onChange={onChange}
+                                    placeholderText="Choose a date..."
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    dropdownMode="select"
                                 />
                             )}
                             rules={{ required: true }}
