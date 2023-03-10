@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { EmployeeContext } from "../context/EmployeeContext";
 import { useForm, Controller } from "react-hook-form";
 import { formatSubmitData } from "../business/tools";
@@ -7,15 +7,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import { states } from "../data/states";
 import { departments } from "../data/departments";
-
+import { ReactModalComponent } from "@fabiendev/react-modal-component";
 
 const EmployeeForm = () => {
+    const [displayModal, setDisplayModal] = useState(false);
     const { handleSubmit, register, control, formState: { errors } } = useForm();
     const { addEmployee } = useContext(EmployeeContext);
+    const toggleModal = () => setDisplayModal(!displayModal);
 
     const addNewEmployee = (data) => {
         const newEmployee = formatSubmitData(data);
         addEmployee(newEmployee);
+        toggleModal();
     };
 
     return (
@@ -207,6 +210,11 @@ const EmployeeForm = () => {
                 </div>
                 <button className="btn">Save</button>
             </form>
+            {displayModal &&
+                <ReactModalComponent hideModal={toggleModal}>
+                    <p>The user has been created with your information.</p>
+                </ReactModalComponent>
+            }
         </div>
     );
 };

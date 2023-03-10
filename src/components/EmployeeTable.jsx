@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import { EmployeeContext } from "../context/EmployeeContext";
 import DataTable from "react-data-table-component";
-import { tableColumns, searchEmployees } from "../business/tools";
+import { tableColumns } from "../data/tableColumns";
+import { searchEmployees } from "../business/tools";
 import Search from "./Search";
 
 const EmployeeTable = () => {
