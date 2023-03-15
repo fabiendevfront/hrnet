@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/EmployeeForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/EmployeeForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useContext } from "react";
+import { EmployeeContext } from "../context/EmployeeContext";
+import { useForm, Controller } from "react-hook-form";
+import { formatSubmitData } from "../business/tools";
+import { ReactModalComponent } from "@fabiendev/react-modal-component";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
+import { states } from "../data/states";
+import { departments } from "../data/departments";
+
+/**
+* Component for Employee Form
+* @component
+* @returns {JSX.Element}
+*/
+const EmployeeForm = () => {
+    const [displayModal, setDisplayModal] = useState(false);
+    const [msgModal, setMsgModal] = useState("");
+
+    // Form handling functions and properties of useForm() hook of react-hook-form
+    const { handleSubmit, register, setValue, control, formState: { errors }, reset } = useForm();
+
+    // Use "EmployeeContext" to access "addEmployee" function through the component
+    const { addEmployee } = useContext(EmployeeContext);
+
+    // Toggle for display the modal
+    const toggleModal = () => setDisplayModal(!displayModal);
+
+    /**
+    * This function call from an EmployeeContext, and use addEmployee function from that context to add the new employee to the table
+    * @param {Object} data - New Employee data to add to the table.
+    */
+    const addNewEmployee = (data) => {
+        const newEmployee = formatSubmitData(data);
+        const { firstname, lastname } = newEmployee;
+        addEmployee(newEmployee);
+        toggleModal();
+        setMsgModal(`The new employee ${firstname} ${lastname} has been added successfully !`);
+        reset();
+        setValue("state", "");
+        setValue("department", "");
+    };
+
+    return (
+        &lt;div className="employee-form">
+            &lt;form className="employee-form__form" onSubmit={handleSubmit(addNewEmployee)}>
+                &lt;div className="employee-form__container">
+                    &lt;h3 className="employee-form__title">Informations&lt;/h3>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="firstname" className="employee-form__label">First Name&lt;/label>
+                        &lt;input
+                            type="text"
+                            id="firstname"
+                            className={errors.firstname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                            {...register(
+                                "firstname",
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
+                            )}
+                        />
+                        {errors.firstname &amp;&amp; (
+                            &lt;p className="employee-form__error">Firstname entered is incorrect&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="lastname" className="employee-form__label">Last Name&lt;/label>
+                        &lt;input
+                            type="text"
+                            id="lastname"
+                            className={errors.lastname ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                            {...register(
+                                "lastname",
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
+                            )}
+                        />
+                        {errors.lastname &amp;&amp; (
+                            &lt;p className="employee-form__error">Lastname entered is incorrect&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="birth" className="employee-form__label">Date of birth&lt;/label>
+                        &lt;Controller
+                            control={control}
+                            name="birthdate"
+                            render={({ field: { onChange, value } }) => (
+                                &lt;DatePicker
+                                    id="birthdate"
+                                    className={errors.birthdate ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                                    selected={value}
+                                    onChange={onChange}
+                                    placeholderText="Choose a date..."
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    dropdownMode="select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.birthdate &amp;&amp; (
+                            &lt;p className="employee-form__error">Birthdate is required&lt;/p>
+                        )}
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="employee-form__container">
+                    &lt;h3 className="employee-form__title">Address&lt;/h3>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="street" className="employee-form__label">Street&lt;/label>
+                        &lt;input
+                            type="text"
+                            id="street"
+                            className={errors.street ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                            {...register(
+                                "street",
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}\s\d]{2,25}$/ui
+                                }
+                            )}
+                        />
+                        {errors.street &amp;&amp; (
+                            &lt;p className="employee-form__error">Street entered is incorrect&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="city" className="employee-form__label">City&lt;/label>
+                        &lt;input
+                            type="text"
+                            id="city"
+                            className={errors.city ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                            {...register(
+                                "city",
+                                {
+                                    required: true,
+                                    pattern: /^[\p{L}]{2,25}$/ui
+                                }
+                            )}
+                        />
+                        {errors.city &amp;&amp; (
+                            &lt;p className="employee-form__error">City entered is incorrect&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="state" className="employee-form__label">State&lt;/label>
+                        &lt;Controller
+                            name="state"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                &lt;Select
+                                    options={states}
+                                    onChange={onChange}
+                                    value={value}
+                                    placeholder="Select a state..."
+                                    className={errors.state ? "react-select react-select--error" : "react-select"}
+                                    classNamePrefix="react-select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.state &amp;&amp; (
+                            &lt;p className="employee-form__error">State is required&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="zip" className="employee-form__label">Zip Code&lt;/label>
+                        &lt;input
+                            type="number"
+                            id="zip"
+                            className={errors.zip ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                            {...register(
+                                "zip",
+                                { required: true }
+                            )}
+                        />
+                        {errors.zip &amp;&amp; (
+                            &lt;p className="employee-form__error">ZIP code is required&lt;/p>
+                        )}
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="employee-form__container">
+                    &lt;h3 className="employee-form__title">Work status&lt;/h3>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="start" className="employee-form__label">Start Date&lt;/label>
+                        &lt;Controller
+                            control={control}
+                            name="start"
+                            render={({ field: { onChange, value } }) => (
+                                &lt;DatePicker
+                                    id="start"
+                                    className={errors.start ? "employee-form__input employee-form__input--error" : "employee-form__input"}
+                                    selected={value}
+                                    onChange={onChange}
+                                    placeholderText="Choose a date..."
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    dropdownMode="select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.start &amp;&amp; (
+                            &lt;p className="employee-form__error">Start date is required&lt;/p>
+                        )}
+                    &lt;/div>
+                    &lt;div className="employee-form__group">
+                        &lt;label htmlFor="department" className="employee-form__label">Department&lt;/label>
+                        &lt;Controller
+                            name="department"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                &lt;Select
+                                    options={departments}
+                                    onChange={onChange}
+                                    value={value}
+                                    placeholder="Select a department..."
+                                    className={errors.state ? "react-select react-select--error" : "react-select"}
+                                    classNamePrefix="react-select"
+                                />
+                            )}
+                            rules={{ required: true }}
+                        />
+                        {errors.department &amp;&amp; (
+                            &lt;p className="employee-form__error">Department is required&lt;/p>
+                        )}
+                    &lt;/div>
+                &lt;/div>
+                &lt;button className="btn">Save&lt;/button>
+            &lt;/form>
+            {displayModal &amp;&amp;
+                &lt;ReactModalComponent
+                    hideModal={toggleModal}
+                    title="Success !"
+                    modalSize="medium"
+                >
+                    &lt;p className="employee-form__modal-txt">{msgModal}&lt;/p>
+                &lt;/ReactModalComponent>
+            }
+        &lt;/div>
+    );
+};
+
+export default EmployeeForm;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-EmployeeContext.html">EmployeeContext</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#AppRouter">AppRouter</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#EmployeeForm">EmployeeForm</a></li><li><a href="global.html#EmployeeList">EmployeeList</a></li><li><a href="global.html#EmployeeTable">EmployeeTable</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LinkButton">LinkButton</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#formatSubmitData">formatSubmitData</a></li><li><a href="global.html#searchEmployees">searchEmployees</a></li><li><a href="global.html#useEmployee">useEmployee</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Mar 16 2023 00:12:34 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

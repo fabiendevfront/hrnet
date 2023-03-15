@@ -3,6 +3,11 @@ import formIcon from "../assets/icons/form.svg";
 import listIcon from "../assets/icons/list.svg";
 import { NavLink, Link } from "react-router-dom";
 
+/**
+ * Component for Header
+ * @component
+ * @returns {JSX.Element}
+ */
 const Header = () => {
     return (
         <header className="header">

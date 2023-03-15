@@ -1,4 +1,4 @@
-// Departments placeholder for select in form
+// Departments data formated for react-select in form
 export const departments = [
     {
         "label": "Sales",

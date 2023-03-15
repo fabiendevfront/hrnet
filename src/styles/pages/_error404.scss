@@ -4,3 +4,29 @@
 /************************/
 /* ERROR 404 PAGE STYLE */
 /************************/
+
+.error-404 {
+    width: 75%;
+    margin: 0 auto;
+    padding: 90px 90px 0 90px;
+    text-align: center;
+
+    &__title {
+        @include mixins.font-size(75px);
+        color: variables.$black;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 50px 0 70px 0;
+    }
+
+    &__link {
+        color: variables.$secondary-color;
+        @include mixins.font-size(30px);
+        font-weight: 500;
+        text-decoration: underline;
+
+        &:hover {
+            color: variables.$primary-color;
+        }
+    }
+}

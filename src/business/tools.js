@@ -1,12 +1,21 @@
 import { format } from "date-fns";
 
-// Format date for datepicker
+/**
+* Format date retrieved from the datepicker
+* @param {Date} date - Date to format
+* @returns {string} Formatted date string.
+*/
 export const formatDate = (date) => {
     const reformattedDate = format(new Date(date), "MM-dd-yyyy");
     return reformattedDate;
 };
 
-// Format data submit on form
+
+/**
+* Formats the given data object into a format suitable for submission via a form.
+* @param {Object} data - Object contain the data of submit form
+* @returns {Object} Object contain employee data formatted
+*/
 export const formatSubmitData = (data) => {
     const formatedData = {
         firstname: data.firstname,
@@ -23,10 +32,13 @@ export const formatSubmitData = (data) => {
     return formatedData;
 };
 
-// Search function for employee table
+/**
+* Search function for employee table
+* @param {Array.<Object>} employees - Array of employees
+* @param {string} search - Search string
+* @returns {Array.<Object>} Array of employees objects match the search
+*/
 export const searchEmployees = (employees, search) => {
-    console.log(employees);
-    console.log(search);
 
     if (!search) {
         return employees;

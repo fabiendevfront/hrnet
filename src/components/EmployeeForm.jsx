@@ -9,17 +9,37 @@ import Select from "react-select";
 import { states } from "../data/states";
 import { departments } from "../data/departments";
 
-
+/**
+* Component for Employee Form
+* @component
+* @returns {JSX.Element}
+*/
 const EmployeeForm = () => {
     const [displayModal, setDisplayModal] = useState(false);
-    const { handleSubmit, register, control, formState: { errors } } = useForm();
+    const [msgModal, setMsgModal] = useState("");
+
+    // Form handling functions and properties of useForm() hook of react-hook-form
+    const { handleSubmit, register, setValue, control, formState: { errors }, reset } = useForm();
+
+    // Use "EmployeeContext" to access "addEmployee" function through the component
     const { addEmployee } = useContext(EmployeeContext);
+
+    // Toggle for display the modal
     const toggleModal = () => setDisplayModal(!displayModal);
 
+    /**
+    * This function call from an EmployeeContext, and use addEmployee function from that context to add the new employee to the table
+    * @param {Object} data - New Employee data to add to the table.
+    */
     const addNewEmployee = (data) => {
         const newEmployee = formatSubmitData(data);
+        const { firstname, lastname } = newEmployee;
         addEmployee(newEmployee);
         toggleModal();
+        setMsgModal(`The new employee ${firstname} ${lastname} has been added successfully !`);
+        reset();
+        setValue("state", "");
+        setValue("department", "");
     };
 
     return (
@@ -212,8 +232,12 @@ const EmployeeForm = () => {
                 <button className="btn">Save</button>
             </form>
             {displayModal &&
-                <ReactModalComponent hideModal={toggleModal}>
-                    <p>The user has been created with your information.</p>
+                <ReactModalComponent
+                    hideModal={toggleModal}
+                    title="Success !"
+                    modalSize="medium"
+                >
+                    <p className="employee-form__modal-txt">{msgModal}</p>
                 </ReactModalComponent>
             }
         </div>

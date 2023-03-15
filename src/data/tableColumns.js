@@ -1,4 +1,4 @@
-// Columns for employee table
+// Columns data formated for react-data-table-component in employee table
 export const tableColumns = [
     {
         name: "FirstName",

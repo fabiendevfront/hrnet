@@ -1,5 +1,10 @@
 import EmployeeForm from "../components/EmployeeForm";
 
+/**
+* Component for page /create-employee
+* @component
+* @returns {JSX.Element}
+*/
 const CreateEmployee = () => {
     return (
         <div className="create-employee">

@@ -1,4 +1,4 @@
-// Mock employees data
+// Employees mock data
 export const mockEmployees = [
     {
         firstname: "Robert",

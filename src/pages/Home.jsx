@@ -1,5 +1,10 @@
 import LinkButton from "../components/LinkButton";
 
+/**
+* Component for Homepage
+* @component
+* @returns {JSX.Element}
+*/
 const Home = () => {
     return (
         <div className="home">

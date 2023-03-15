@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 /**
-* Component for Error404 page
+* Component for Error404
 * @component
 * @returns {JSX.Element}
 */

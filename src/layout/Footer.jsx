@@ -1,5 +1,10 @@
 import logo from "../assets/logo.png";
 
+/**
+ * Component for Footer
+ * @component
+ * @returns {JSX.Element}
+ */
 const Footer = () => {
     return (
         <footer className="footer">

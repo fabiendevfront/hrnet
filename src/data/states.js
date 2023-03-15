@@ -1,4 +1,4 @@
-// States placeholder for select in form
+// States data formated for react-select in form
 export const states = [
     {
         "label": "Alabama",
