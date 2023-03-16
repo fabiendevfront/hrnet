@@ -16,7 +16,7 @@
     &_Pagination {
         @include mixins.font-size(16.5px);
         font-weight: 500 !important;
-        color: variables.$secondary-color !important;
+        color: variables.$primary-color !important;
     }
 
     &_TableCell {
@@ -25,10 +25,10 @@
 }
 
 .hbotQl {
-    color: variables.$secondary-color;
+    color: variables.$primary-color;
     white-space: normal !important;
 }
 
 .fyrdjl:disabled {
-    fill: variables.$secondary-color !important;
+    fill: variables.$primary-color !important;
 }

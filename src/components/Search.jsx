@@ -11,11 +11,13 @@ import PropTypes from "prop-types";
 const Search = ({ label, onChange, customStyle }) => {
     return (
         <div className={customStyle}>
-            <label className="search__label">{label}</label>
+            <label htmlFor="search" id="search" className="search__label">{label}</label>
             <input
+                name="search"
                 type="text"
                 className="search__input"
                 onChange={onChange}
+                aria-labelledby="search"
             />
         </div>
     );

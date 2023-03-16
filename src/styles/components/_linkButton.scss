@@ -27,6 +27,15 @@
     }
 
     &:hover {
-        background-color: #748813;
+        background-color: lighten(variables.$primary-color, 8);
+    }
+
+    &--home {
+        background-color: lighten(variables.$primary-color, 12);
+        color: variables.$white;
+
+        &:hover {
+            background-color: lighten(variables.$primary-color, 3);
+        }
     }
 }

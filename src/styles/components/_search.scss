@@ -9,7 +9,7 @@
 
     &__label {
         @include mixins.font-size(15px);
-        color: variables.$secondary-color;
+        color: variables.$primary-color;
     }
 
     &__input {

@@ -146,19 +146,22 @@ const EmployeeForm = () => {
                         )}
                     </div>
                     <div className="employee-form__group">
-                        <label htmlFor="state" className="employee-form__label">State</label>
                         <Controller
                             name="state"
                             control={control}
                             render={({ field: { onChange, value } }) => (
-                                <Select
-                                    options={states}
-                                    onChange={onChange}
-                                    value={value}
-                                    placeholder="Select a state..."
-                                    className={errors.state ? "react-select react-select--error" : "react-select"}
-                                    classNamePrefix="react-select"
-                                />
+                                <>
+                                    <label htmlFor="state" id="state" className="employee-form__label">State</label>
+                                    <Select
+                                        options={states}
+                                        onChange={onChange}
+                                        value={value}
+                                        placeholder="Select a state..."
+                                        className={errors.state ? "react-select react-select--error" : "react-select"}
+                                        classNamePrefix="react-select"
+                                        aria-labelledby="state"
+                                    />
+                                </>
                             )}
                             rules={{ required: true }}
                         />
@@ -208,19 +211,22 @@ const EmployeeForm = () => {
                         )}
                     </div>
                     <div className="employee-form__group">
-                        <label htmlFor="department" className="employee-form__label">Department</label>
                         <Controller
                             name="department"
                             control={control}
                             render={({ field: { onChange, value } }) => (
-                                <Select
-                                    options={departments}
-                                    onChange={onChange}
-                                    value={value}
-                                    placeholder="Select a department..."
-                                    className={errors.state ? "react-select react-select--error" : "react-select"}
-                                    classNamePrefix="react-select"
-                                />
+                                <>
+                                    <label htmlFor="department" id="department" className="employee-form__label">Department</label>
+                                    <Select
+                                        options={departments}
+                                        onChange={onChange}
+                                        value={value}
+                                        placeholder="Select a department..."
+                                        className={errors.state ? "react-select react-select--error" : "react-select"}
+                                        classNamePrefix="react-select"
+                                        aria-labelledby="department"
+                                    />
+                                </>
                             )}
                             rules={{ required: true }}
                         />

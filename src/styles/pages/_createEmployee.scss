@@ -14,18 +14,30 @@
 
     &__title {
         @include mixins.font-size(42px);
-        color: variables.$secondary-color;
+        color: variables.$primary-color;
         margin: 15px 0 0 0;
     }
 
     &__content {
         width: 90%;
         max-width: 1300px;
-        padding: 40px 50px;
+        padding: 40px 40px;
         display: flex;
         flex-direction: column;
         background-color: variables.$white;
         border-radius: 8px;
         box-shadow: 0 8px 24px rgb(149 157 165/20%);
+
+        @include mixins.large-break {
+            padding: 40px 35px;
+        }
+
+        @include mixins.medium-break {
+            padding: 40px 15px;
+        }
+
+        @include mixins.small-break {
+            padding: 40px 25px;
+        }
     }
 }
