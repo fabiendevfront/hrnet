@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+![logo](src/assets/logo_readme.png)
+
+## Presentation
+
+HRnet is an application to create and view employees records.
+
+## Requirements
+
+* [NodeJS](https://nodejs.org/en/)
+* [NPM](https://www.npmjs.com/)
+
+## Launching the project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+* Clone this project: [https://github.com/fabiendevfront/hrnet](https://github.com/fabiendevfront/hrnet)
+* Go to folder and open a terminal window
+* Install dependencies with `npm install`
+* Start application with `npm start`, allow you to run at http://localhost:3000
+* For build App for production use `npm run build`
+* For generate JSDoc use `npm run docs`
 
-In the project directory, you can run:
+## Dependencies
 
-### `npm start`
+* "@fabiendev/react-modal-component": "^0.0.10"
+* "date-fns": "^2.29.3"
+* "prop-types": "^15.8.1"
+* "react": "^18.2.0"
+* "react-data-table-component": "^7.5.3"
+* "react-datepicker": "^4.10.0"
+* "react-hook-form": "^7.43.2"
+* "react-router-dom": "^6.8.1"
+* "react-select": "^5.7.0"
+* "sass": "^1.58.3"
+* "jsdoc": "^4.0.2"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## React modal library create for project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- GitHub repository: [React Modal Component](https://github.com/fabiendevfront/react-modal-component)
+- NPM: [@fabiendev/react-modal-component](https://www.npmjs.com/package/@fabiendev/react-modal-component)

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { EmployeeContext } from "../context/EmployeeContext";
 import { useForm, Controller } from "react-hook-form";
 import { formatSubmitData } from "../business/tools";
-import { ReactModalComponent } from "@fabiendev/react-modal-component";
+import ReactModalComponent from "@fabiendev/react-modal-component";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
